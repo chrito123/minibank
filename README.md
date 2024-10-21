@@ -3,3 +3,4 @@ Develop an API to open current accounts for existing customers. It provides an e
 
 ### For development 
 adding gradle plugin in eclipse -> buildship gradle integration 
+addding lombok for eclipse -> help -> install new software -> work with -> https://projectlombok.org/p2 -> install -> restart 
