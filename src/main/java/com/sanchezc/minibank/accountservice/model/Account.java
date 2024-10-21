@@ -19,7 +19,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -29,20 +28,17 @@ import lombok.Setter;
 @Entity
 public class Account {
 
- @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
- private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
- @ManyToOne
- @JoinColumn(name = "customer_id", nullable = false)
- private Customer customer;
+	@ManyToOne
+	@JoinColumn(name = "customer_id", nullable = false)
+	private Customer customer;
 
- private Double balance;
+	private Double balance;
 
- @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
- private List<Transaction> transactions;
-
-
-
+	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+	private List<Transaction> transactions;
 
 }
