@@ -30,7 +30,7 @@ public class TransactionRepositoryTest {
 
     @Test
     public void testSaveTransaction() {
-        Customer customer = new Customer(null, "Alice", "Smith", null);
+        Customer customer = new Customer(null, "John", "Smith", null);
         Customer savedCustomer = customerRepository.save(customer);
 
         Account account = new Account(null, savedCustomer, 500.0,null);
