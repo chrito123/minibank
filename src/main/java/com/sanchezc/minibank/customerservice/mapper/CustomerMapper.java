@@ -10,4 +10,5 @@ public interface CustomerMapper {
 	
 	public CustomerDTO mapToCustomerDTO(Customer customer);
 	
+	public Customer mapToCustomer(CustomerDTO customerDTO);
 }
