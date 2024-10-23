@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import com.sanchezc.minibank.accountservice.exception.AccountNotFoundException;
 import com.sanchezc.minibank.customerservice.exception.CustomerNotFoundException;
@@ -35,7 +36,14 @@ public class GlobalExceptionHandler {
     public GlobalExceptionDTO handleIllegalArgumentException(IllegalArgumentException ex) {
         return new GlobalExceptionDTO("BAD_REQUEST", ex.getMessage());
     }
-
+    
+    
+    @ExceptionHandler(NoResourceFoundException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public GlobalExceptionDTO handleNoResourceFoundException(NoResourceFoundException ex) {
+        return new GlobalExceptionDTO("NO_RESOURCE_FOUND", ex.getMessage());
+    }
+    
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public GlobalExceptionDTO handleGeneralException(Exception ex) {

@@ -13,11 +13,12 @@ import com.sanchezc.minibank.customerservice.model.Customer;
 
 @SpringBootTest
 public class AccountMapperTest {
+	
 	@Autowired
 	AccountMapper accountMapper;
 
 	@Test
-	public void testAccountMapper() {
+	public void testAccountMappertoAccountDTO() {
 		Customer customer = new Customer(1L, "Jane", "Doe", null);
 		Account account = new Account(1L, customer, 750.0,null);
 
@@ -26,5 +27,16 @@ public class AccountMapperTest {
 		assertThat(accountDTO.id()).isEqualTo(account.getId());
 		assertThat(accountDTO.customerId()).isEqualTo(customer.getId());
 		assertThat(accountDTO.balance()).isEqualTo(account.getBalance());
+	}
+	@Test
+	public void testAccountMappertoAccount() {
+		
+		
+		AccountDTO accountDTO = new AccountDTO(1L, 1L, 50.0);
+		Account account = accountMapper.mapToAccount(accountDTO);
+		
+		assertThat(account.getId()).isEqualTo(accountDTO.id());
+		assertThat(account.getCustomer()).isEqualTo(null);
+		assertThat(account.getBalance()).isEqualTo(account.getBalance());
 	}
 }

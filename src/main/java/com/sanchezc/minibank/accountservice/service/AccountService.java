@@ -25,6 +25,7 @@ public class AccountService {
     @Autowired
     private AccountMapper accountMapper;
 
+    
     public AccountDTO createAccount(AccountDTO accountDTO) {
         Optional<Customer> customerOptional = customerRepository.findById(accountDTO.customerId());
         if (customerOptional.isEmpty()) {
@@ -34,6 +35,7 @@ public class AccountService {
         Account account = accountMapper.mapToAccount(accountDTO);
         account.setCustomer(customer);
         Account savedAccount = accountRepository.save(account);
+        System.out.println(savedAccount.getId());
 
         return accountMapper.mapToAccountDto(savedAccount);
     }
@@ -47,4 +49,5 @@ public class AccountService {
         Account account = accountOptional.get();
         return accountMapper.mapToAccountDto(account);
     }
+
 }

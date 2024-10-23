@@ -20,7 +20,7 @@ public abstract class TransactionMapper {
 	@Mapping(target = "accountId", source = "account.id")
 	public abstract TransactionDTO mapToTransactionDTO(Transaction transaction);
 	
-	@Mapping(target = "account", expression = "java(accountRepository.getById(transactionDto.accountId()))")
+	@Mapping(target = "account", expression = "java(accountRepository.findById(transactionDto.accountId()).get())")
 	public abstract Transaction mapToTransaction(TransactionDTO transactionDto) ;
 		
 	
