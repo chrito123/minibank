@@ -1,4 +1,4 @@
-package com.sanchezc.minibank.dto;
+package com.sanchezc.minibank.accountservice.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;

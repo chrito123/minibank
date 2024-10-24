@@ -18,9 +18,9 @@ import com.sanchezc.minibank.transactionservice.dto.TransactionDTO;
 import com.sanchezc.minibank.transactionservice.mapper.TransactionMapper;
 import com.sanchezc.minibank.transactionservice.model.Transaction;
 import com.sanchezc.minibank.transactionservice.repository.TransactionRepository;
-import com.sanchezc.minibank.transactionservice.service.TransactionService;
+import com.sanchezc.minibank.transactionservice.service.TransactionServiceImpl;
 
-public class TransactionServiceTest {
+public class TransactionServiceImplTest {
 
 	@Mock
 	private TransactionRepository transactionRepository;
@@ -32,7 +32,7 @@ public class TransactionServiceTest {
 	private TransactionMapper transactionMapper;
 
 	@InjectMocks
-	private TransactionService transactionService;
+	private TransactionServiceImpl transactionService;
 
 	@BeforeEach
 	public void setUp() {

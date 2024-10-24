@@ -16,10 +16,11 @@ import com.sanchezc.minibank.accountservice.mapper.AccountMapper;
 import com.sanchezc.minibank.accountservice.model.Account;
 import com.sanchezc.minibank.accountservice.repository.AccountRepository;
 import com.sanchezc.minibank.accountservice.service.AccountService;
+import com.sanchezc.minibank.accountservice.service.AccountServiceImpl;
 import com.sanchezc.minibank.customerservice.model.Customer;
 import com.sanchezc.minibank.customerservice.repository.CustomerRepository;
 
-public class AccountServiceTest {
+public class AccountServiceImplTest {
 	
 	@Mock
 	private AccountRepository accountRepository;
@@ -31,7 +32,7 @@ public class AccountServiceTest {
 	private AccountMapper accountMapper; 
 
 	@InjectMocks
-	private AccountService accountService;
+	private AccountServiceImpl accountService;
 
 	@BeforeEach
 	public void setUp() {
@@ -45,7 +46,7 @@ public class AccountServiceTest {
 		
 		Account account =  new Account(1L,customer,1000.0,null);
 		
-		AccountDTO accountDTO = new AccountDTO(1L, 1L, 1000.0);
+		AccountDTO accountDTO = new AccountDTO(1L, 1L, 1000.0,null);
 		when(accountMapper.mapToAccount(accountDTO)).thenReturn(account);
 		
 		when(accountRepository.save(account)).thenReturn(account);

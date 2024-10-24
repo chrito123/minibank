@@ -14,7 +14,7 @@ public class AccountDTOTest {
         Long customerId = 1L;
         Double balance = 500.0;
 
-        AccountDTO accountDTO = new AccountDTO(accountId, customerId, balance);
+        AccountDTO accountDTO = new AccountDTO(accountId, customerId, balance,null);
 
         assertThat(accountDTO.id()).isEqualTo(accountId);
         assertThat(accountDTO.customerId()).isEqualTo(customerId);

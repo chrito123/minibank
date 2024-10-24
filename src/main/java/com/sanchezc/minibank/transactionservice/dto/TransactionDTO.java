@@ -8,4 +8,5 @@ public record TransactionDTO(
     Double amount,
     LocalDateTime transactionDate
 ) {
+
 }

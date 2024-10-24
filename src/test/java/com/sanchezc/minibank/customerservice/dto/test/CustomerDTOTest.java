@@ -17,8 +17,8 @@ public class CustomerDTOTest {
         String name = "John";
         String surname = "Doe";
         List<AccountDTO> accounts = List.of(
-            new AccountDTO(1L, customerId, 500.0),
-            new AccountDTO(2L, customerId, 1000.0)
+            new AccountDTO(1L, customerId, 500.0,null),
+            new AccountDTO(2L, customerId, 1000.0,null)
         );
 
         CustomerDTO customerDTO = new CustomerDTO(customerId, name, surname, accounts);

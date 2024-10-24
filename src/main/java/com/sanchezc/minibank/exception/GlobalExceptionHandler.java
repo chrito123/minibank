@@ -1,10 +1,9 @@
 package com.sanchezc.minibank.exception;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import com.sanchezc.minibank.accountservice.exception.AccountNotFoundException;
@@ -13,8 +12,7 @@ import com.sanchezc.minibank.dto.GlobalExceptionDTO;
 import com.sanchezc.minibank.transactionservice.exception.TransactionNotFoundException;
 
 
-@ControllerAdvice
-@RestController
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(CustomerNotFoundException.class)

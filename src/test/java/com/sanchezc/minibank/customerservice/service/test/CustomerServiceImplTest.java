@@ -18,8 +18,9 @@ import com.sanchezc.minibank.customerservice.mapper.CustomerMapper;
 import com.sanchezc.minibank.customerservice.model.Customer;
 import com.sanchezc.minibank.customerservice.repository.CustomerRepository;
 import com.sanchezc.minibank.customerservice.service.CustomerService;
+import com.sanchezc.minibank.customerservice.service.CustomerServiceImpl;
 
-public class CustomerServiceTest {
+public class CustomerServiceImplTest {
 
     @Mock
     private CustomerRepository customerRepository;
@@ -28,7 +29,7 @@ public class CustomerServiceTest {
     private CustomerMapper customerMapper;
 
     @InjectMocks
-    private CustomerService customerService;
+    private CustomerServiceImpl customerService;
 
     @BeforeEach
     public void setUp() {
@@ -50,7 +51,7 @@ public class CustomerServiceTest {
     }
 
     @Test
-    public void testGetCustomerById_NotFound() {
+    public void testGetCustomerByIdNotFound() {
         when(customerRepository.findById(1L)).thenReturn(Optional.empty());
 
         assertThrows(CustomerNotFoundException.class, () -> customerService.getCustomerById(1L));
