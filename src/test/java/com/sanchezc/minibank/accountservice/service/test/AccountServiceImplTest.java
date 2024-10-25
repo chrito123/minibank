@@ -15,7 +15,6 @@ import com.sanchezc.minibank.accountservice.dto.AccountDTO;
 import com.sanchezc.minibank.accountservice.mapper.AccountMapper;
 import com.sanchezc.minibank.accountservice.model.Account;
 import com.sanchezc.minibank.accountservice.repository.AccountRepository;
-import com.sanchezc.minibank.accountservice.service.AccountService;
 import com.sanchezc.minibank.accountservice.service.AccountServiceImpl;
 import com.sanchezc.minibank.customerservice.model.Customer;
 import com.sanchezc.minibank.customerservice.repository.CustomerRepository;

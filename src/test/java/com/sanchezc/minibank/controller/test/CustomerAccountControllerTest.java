@@ -14,16 +14,16 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sanchezc.minibank.accountservice.controller.AccountController;
 import com.sanchezc.minibank.accountservice.dto.AccountCreationRequestDTO;
 import com.sanchezc.minibank.accountservice.dto.AccountDTO;
 import com.sanchezc.minibank.accountservice.service.AccountService;
-import com.sanchezc.minibank.controller.CustomerAccountController;
 import com.sanchezc.minibank.customerservice.dto.CustomerDTO;
 import com.sanchezc.minibank.customerservice.service.CustomerService;
 import com.sanchezc.minibank.transactionservice.dto.TransactionDTO;
 import com.sanchezc.minibank.transactionservice.service.TransactionService;
 
-@WebMvcTest(CustomerAccountController.class)
+@WebMvcTest(AccountController.class)
 public class CustomerAccountControllerTest {
 
 	@Autowired

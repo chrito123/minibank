@@ -17,7 +17,6 @@ import com.sanchezc.minibank.customerservice.exception.CustomerNotFoundException
 import com.sanchezc.minibank.customerservice.mapper.CustomerMapper;
 import com.sanchezc.minibank.customerservice.model.Customer;
 import com.sanchezc.minibank.customerservice.repository.CustomerRepository;
-import com.sanchezc.minibank.customerservice.service.CustomerService;
 import com.sanchezc.minibank.customerservice.service.CustomerServiceImpl;
 
 public class CustomerServiceImplTest {
