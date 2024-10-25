@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sanchezc.minibank.accountservice.controller.AccountController;
 import com.sanchezc.minibank.accountservice.dto.AccountCreationRequestDTO;
 import com.sanchezc.minibank.accountservice.dto.AccountDTO;
+import com.sanchezc.minibank.accountservice.model.AccountType;
 import com.sanchezc.minibank.accountservice.service.AccountService;
 import com.sanchezc.minibank.customerservice.dto.CustomerDTO;
 import com.sanchezc.minibank.customerservice.service.CustomerService;
@@ -47,7 +48,7 @@ public class CustomerAccountControllerTest {
 		Long customerId = 1L;
 
 		CustomerDTO customerDTO = new CustomerDTO(customerId, "John", "Doe", null);
-		AccountDTO accountDTO = new AccountDTO(1L, customerId, initialCredit,null);
+		AccountDTO accountDTO = new AccountDTO(1L, customerId, initialCredit,null,AccountType.CURRENT);
 
 		when(customerService.getCustomerById(customerId)).thenReturn(customerDTO);
 		when(accountService.getAccountById(customerId)).thenReturn(accountDTO);
@@ -66,7 +67,7 @@ public class CustomerAccountControllerTest {
 		Long customerId = 1L;
 
 		CustomerDTO customerDTO = new CustomerDTO(customerId, "John", "Doe", null);
-		AccountDTO accountDTO = new AccountDTO(1L, customerId, initialCredit,null);
+		AccountDTO accountDTO = new AccountDTO(1L, customerId, initialCredit,null,AccountType.CURRENT);
 
 		when(customerService.getCustomerById(customerId)).thenReturn(customerDTO);
 		when(accountService.getAccountById(customerId)).thenReturn(accountDTO);

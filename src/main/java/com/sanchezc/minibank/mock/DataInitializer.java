@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.sanchezc.minibank.accountservice.dto.AccountDTO;
+import com.sanchezc.minibank.accountservice.model.AccountType;
 import com.sanchezc.minibank.accountservice.service.AccountService;
 import com.sanchezc.minibank.customerservice.dto.CustomerDTO;
 import com.sanchezc.minibank.customerservice.service.CustomerService;
@@ -30,7 +31,6 @@ public class DataInitializer implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-
 		CustomerDTO[] customers = { new CustomerDTO(null, "Christian", "Sanchez", null),
 				new CustomerDTO(null, "Marie", "Dubois", null), new CustomerDTO(null, "Paul", "Martin", null),
 				new CustomerDTO(null, "Sophie", "Lemoine", null), new CustomerDTO(null, "Pierre", "Durand", null),
@@ -40,14 +40,13 @@ public class DataInitializer implements CommandLineRunner {
 		for (CustomerDTO customer : customers) {
 			customer = customerService.createCustomer(customer);
 
-			AccountDTO savedAccount = accountService.createAccount(new AccountDTO(null, customer.id(), 100.5,null));
-			Double amount = (Math.random() * 1000) ; 
-		
-			TransactionDTO transactionDTO = new TransactionDTO(null, savedAccount.id(), amount,
-					LocalDateTime.now());
+			AccountDTO savedAccount = accountService.createAccount(new AccountDTO(null, customer.id(), 100.5, null,AccountType.CURRENT));
+			Double amount = (Math.random() * 1000);
+
+			TransactionDTO transactionDTO = new TransactionDTO(null, savedAccount.id(), amount, LocalDateTime.now());
 			transactionService.createTransaction(transactionDTO);
 			if (Math.random() < 0.6) {
-				AccountDTO account2 = new AccountDTO(null, customer.id(), 1500.6,null);
+				AccountDTO account2 = new AccountDTO(null, customer.id(), 1500.6, null,AccountType.CURRENT);
 				accountService.createAccount(account2);
 			}
 
@@ -55,5 +54,4 @@ public class DataInitializer implements CommandLineRunner {
 
 	}
 
-	
 }

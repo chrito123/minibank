@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.sanchezc.minibank.accountservice.model.Account;
+import com.sanchezc.minibank.accountservice.model.AccountType;
 import com.sanchezc.minibank.accountservice.repository.AccountRepository;
 import com.sanchezc.minibank.transactionservice.dto.TransactionDTO;
 import com.sanchezc.minibank.transactionservice.mapper.TransactionMapper;
@@ -41,7 +42,7 @@ public class TransactionServiceImplTest {
 
 	@Test
 	public void testCreateTransaction() {
-		Account account = new Account(1L, null, 500.0, null);
+		Account account = new Account(1L, null, 500.0, null,AccountType.CURRENT);
 		when(accountRepository.findById(1L)).thenReturn(Optional.of(account));
 
 		TransactionDTO transactionDTO = new TransactionDTO(1L, 1L, 200.0, LocalDateTime.now());

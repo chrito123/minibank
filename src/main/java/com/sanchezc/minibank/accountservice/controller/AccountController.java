@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sanchezc.minibank.accountservice.dto.AccountCreationRequestDTO;
 import com.sanchezc.minibank.accountservice.dto.AccountDTO;
+import com.sanchezc.minibank.accountservice.model.AccountType;
 import com.sanchezc.minibank.accountservice.service.AccountService;
 
 import jakarta.validation.Valid;
@@ -29,7 +30,7 @@ public class AccountController {
 	public AccountDTO createAccount(@PathVariable("customerId") Long customerId,
 			@Valid @RequestBody AccountCreationRequestDTO accountCreationRequestDTO) {
 
-		AccountDTO accountDto = new AccountDTO(null, customerId, accountCreationRequestDTO.initialCredit(), null);
+		AccountDTO accountDto = new AccountDTO(null, customerId, accountCreationRequestDTO.initialCredit(), null,AccountType.CURRENT);
 		AccountDTO createdAccountDto = accountService.createAccount(accountDto);
 
 		return createdAccountDto;

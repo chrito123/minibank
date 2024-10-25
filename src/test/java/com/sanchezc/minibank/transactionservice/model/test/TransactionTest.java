@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.sanchezc.minibank.accountservice.model.Account;
+import com.sanchezc.minibank.accountservice.model.AccountType;
 import com.sanchezc.minibank.customerservice.model.Customer;
 import com.sanchezc.minibank.transactionservice.model.Transaction;
 
@@ -20,7 +21,7 @@ public class TransactionTest {
 		Long customerId = 1000L;
 		Long accountId = 1L;
 		Customer customer = new Customer(customerId, "John", "Doe", null);
-		Account account1 = new Account(accountId, customer, 100d,null);
+		Account account1 = new Account(accountId, customer, 100d,null,AccountType.CURRENT);
 		Transaction transaction = new Transaction(transactionId, account1, 50d, now);
 		assertEquals(transactionId, transaction.getId());
 		assertEquals(account1, transaction.getAccount());
@@ -35,7 +36,7 @@ public class TransactionTest {
 		Long customerId = 1000L;
 		Long accountId = 1L;
 		Customer customer = new Customer(customerId, "John", "Doe", null);
-		Account account1 = new Account(accountId, customer, 100d,null);
+		Account account1 = new Account(accountId, customer, 100d,null,AccountType.CURRENT);
 		Transaction transaction1 = new Transaction(transactionId, account1, 50d, now);
 		Transaction transaction2 = new Transaction(transactionId, account1, 50d, now);
 		assertEquals(transaction1, transaction2);

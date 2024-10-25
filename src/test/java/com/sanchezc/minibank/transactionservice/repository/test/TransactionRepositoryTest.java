@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import com.sanchezc.minibank.accountservice.model.Account;
+import com.sanchezc.minibank.accountservice.model.AccountType;
 import com.sanchezc.minibank.accountservice.repository.AccountRepository;
 import com.sanchezc.minibank.customerservice.model.Customer;
 import com.sanchezc.minibank.customerservice.repository.CustomerRepository;
@@ -33,7 +34,7 @@ public class TransactionRepositoryTest {
         Customer customer = new Customer(null, "John", "Smith", null);
         Customer savedCustomer = customerRepository.save(customer);
 
-        Account account = new Account(null, savedCustomer, 500.0,null);
+        Account account = new Account(null, savedCustomer, 500.0,null,AccountType.CURRENT);
         Account savedAccount = accountRepository.save(account);
 
         Transaction transaction = new Transaction(null, savedAccount, 200.0, LocalDateTime.now());

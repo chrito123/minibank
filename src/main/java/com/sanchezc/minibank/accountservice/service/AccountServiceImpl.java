@@ -5,10 +5,12 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sanchezc.minibank.accountservice.dto.AccountDTO;
 import com.sanchezc.minibank.accountservice.mapper.AccountMapper;
 import com.sanchezc.minibank.accountservice.model.Account;
+import com.sanchezc.minibank.accountservice.model.AccountType;
 import com.sanchezc.minibank.accountservice.repository.AccountRepository;
 import com.sanchezc.minibank.customerservice.exception.CustomerNotFoundException;
 import com.sanchezc.minibank.customerservice.model.Customer;
@@ -30,9 +32,10 @@ public class AccountServiceImpl implements AccountService {
 
 	@Autowired
 	private AccountMapper accountMapper;
-
+	
+	@Transactional
 	@Override
-	public AccountDTO createAccount(AccountDTO accountDTO) {
+	public synchronized AccountDTO createAccount(AccountDTO accountDTO) {
 		Optional<Customer> customerOptional = customerRepository.findById(accountDTO.customerId());
 		if (customerOptional.isEmpty()) {
 			throw new CustomerNotFoundException("Customer with ID " + accountDTO.customerId() + " not found");
@@ -41,6 +44,7 @@ public class AccountServiceImpl implements AccountService {
 		Customer customer = customerOptional.get();
 		Account account = accountMapper.mapToAccount(accountDTO);
 		account.setCustomer(customer);
+		account.setType(AccountType.CURRENT);
 		Account savedAccount = accountRepository.save(account);
 		if (initialCredit > 0) {
 			Transaction transaction = new Transaction();
@@ -49,8 +53,9 @@ public class AccountServiceImpl implements AccountService {
 			transaction.setTransactionDate(LocalDateTime.now());
 			transactionRepository.save(transaction);
 		}
-
+		
 		return accountMapper.mapToAccountDto(savedAccount);
+
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import com.sanchezc.minibank.accountservice.model.Account;
+import com.sanchezc.minibank.accountservice.model.AccountType;
 import com.sanchezc.minibank.accountservice.repository.AccountRepository;
 import com.sanchezc.minibank.customerservice.model.Customer;
 import com.sanchezc.minibank.customerservice.repository.CustomerRepository;
@@ -25,7 +26,7 @@ public class AccountRepositoryTest {
         Customer customer = new Customer(null, "Jane", "Doe", null);
         Customer savedCustomer = customerRepository.save(customer);
 
-        Account account = new Account(null, savedCustomer, 1000.0, null);
+        Account account = new Account(null, savedCustomer, 1000.0, null,AccountType.CURRENT);
         Account savedAccount = accountRepository.save(account);
 
         assertThat(savedAccount.getId()).isNotNull();

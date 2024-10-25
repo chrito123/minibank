@@ -24,10 +24,12 @@ public abstract class AccountMapper {
 
 	@Mapping(target = "customerId", expression = "java(account.getCustomer() != null ? account.getCustomer().getId() : null)")
 	@Mapping(target = "transactions", source = "transactions")
+	@Mapping(target = "accountType",source = "account.type")
 	public abstract AccountDTO mapToAccountDto(Account account);
 
 	@Mapping(target = "customer", expression = "java(customerRepository.findById(accountDto.customerId()).get())")
 	@Mapping(target = "transactions", expression = "java(transactionRepository.getTransactionsByAccountId(accountDto.id()))")
+	@Mapping(target = "type",source = "accountType")
 	public abstract Account mapToAccount(AccountDTO accountDto);
 
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.sanchezc.minibank.accountservice.model.Account;
+import com.sanchezc.minibank.accountservice.model.AccountType;
 import com.sanchezc.minibank.transactionservice.dto.TransactionDTO;
 import com.sanchezc.minibank.transactionservice.mapper.TransactionMapper;
 import com.sanchezc.minibank.transactionservice.model.Transaction;
@@ -21,7 +22,7 @@ public class TransactionMapperTest {
 
 	@Test
 	public void testTransactionMapper() {
-		Account account = new Account(1L, null, 500.0,null);
+		Account account = new Account(1L, null, 500.0,null,AccountType.CURRENT);
 		Transaction transaction = new Transaction(1L, account, 200.0, LocalDateTime.now());
 
 		TransactionDTO transactionDTO = transactionMapper.mapToTransactionDTO(transaction);
