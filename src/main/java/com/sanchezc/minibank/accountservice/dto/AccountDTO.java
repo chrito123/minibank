@@ -2,7 +2,6 @@ package com.sanchezc.minibank.accountservice.dto;
 
 import java.util.List;
 
-import com.sanchezc.minibank.accountservice.model.AccountType;
 import com.sanchezc.minibank.transactionservice.dto.TransactionDTO;
 
 public record AccountDTO(
@@ -10,6 +9,6 @@ public record AccountDTO(
     Long customerId,
     Double balance,
     List<TransactionDTO> transactions,
-    AccountType accountType
+    AccountTypeDTO accountType
 ) {
 }

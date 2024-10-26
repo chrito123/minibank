@@ -14,6 +14,7 @@ import com.sanchezc.minibank.accountservice.repository.AccountRepository;
 import com.sanchezc.minibank.customerservice.model.Customer;
 import com.sanchezc.minibank.customerservice.repository.CustomerRepository;
 import com.sanchezc.minibank.transactionservice.model.Transaction;
+import com.sanchezc.minibank.transactionservice.model.TransactionType;
 import com.sanchezc.minibank.transactionservice.repository.TransactionRepository;
 
 
@@ -37,7 +38,7 @@ public class TransactionRepositoryTest {
         Account account = new Account(null, savedCustomer, 500.0,null,AccountType.CURRENT);
         Account savedAccount = accountRepository.save(account);
 
-        Transaction transaction = new Transaction(null, savedAccount, 200.0, LocalDateTime.now());
+        Transaction transaction = new Transaction(null, savedAccount, 200.0, LocalDateTime.now(),TransactionType.DEPOSIT,null);
         Transaction savedTransaction = transactionRepository.save(transaction);
 
         assertThat(savedTransaction.getId()).isNotNull();

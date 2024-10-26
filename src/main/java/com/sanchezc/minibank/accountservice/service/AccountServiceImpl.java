@@ -53,7 +53,6 @@ public class AccountServiceImpl implements AccountService {
 			transaction.setTransactionDate(LocalDateTime.now());
 			transactionRepository.save(transaction);
 		}
-		
 		return accountMapper.mapToAccountDto(savedAccount);
 
 	}
@@ -64,7 +63,6 @@ public class AccountServiceImpl implements AccountService {
 		if (accountOptional.isEmpty()) {
 			throw new CustomerNotFoundException("Account with ID " + id + " not found");
 		}
-
 		Account account = accountOptional.get();
 		return accountMapper.mapToAccountDto(account);
 	}

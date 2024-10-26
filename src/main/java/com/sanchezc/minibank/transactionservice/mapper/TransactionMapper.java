@@ -18,9 +18,11 @@ public abstract class TransactionMapper {
 	@Autowired
 	protected AccountRepository accountRepository;
 
+	@Mapping(target = "destinationAccountId", ignore = true)
 	@Mapping(target = "accountId", expression = "java(transaction.getAccount().getId())")
 	public abstract TransactionDTO mapToTransactionDTO(Transaction transaction);
 
+	@Mapping(target = "destinationAccount", ignore = true)
 	@Mapping(target = "account", expression = "java(accountRepository.findById(transactionDto.accountId()).get())")
 	public abstract Transaction mapToTransaction(TransactionDTO transactionDto);
 

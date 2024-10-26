@@ -16,15 +16,18 @@ import com.sanchezc.minibank.transactionservice.exception.TransactionNotFoundExc
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(CustomerNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public GlobalExceptionDTO handleCustomerNotFoundException(CustomerNotFoundException ex) {
         return new GlobalExceptionDTO("CUSTOMER_NOT_FOUND", ex.getMessage());
     }
     
     @ExceptionHandler(AccountNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public GlobalExceptionDTO handleAccountNotFoundException(AccountNotFoundException ex) {
         return new GlobalExceptionDTO("ACCOUNT_NOT_FOUND", ex.getMessage());
     }
     @ExceptionHandler(TransactionNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public GlobalExceptionDTO handleTransactionNotFoundException(TransactionNotFoundException ex) {
         return new GlobalExceptionDTO("TRANSACTION_NOT_FOUND", ex.getMessage());
     }

@@ -8,11 +8,12 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.sanchezc.minibank.accountservice.dto.AccountDTO;
-import com.sanchezc.minibank.accountservice.model.AccountType;
+import com.sanchezc.minibank.accountservice.dto.AccountTypeDTO;
 import com.sanchezc.minibank.accountservice.service.AccountService;
 import com.sanchezc.minibank.customerservice.dto.CustomerDTO;
 import com.sanchezc.minibank.customerservice.service.CustomerService;
 import com.sanchezc.minibank.transactionservice.dto.TransactionDTO;
+import com.sanchezc.minibank.transactionservice.dto.TransactionTypeDTO;
 import com.sanchezc.minibank.transactionservice.service.TransactionService;
 
 @Component
@@ -40,13 +41,15 @@ public class DataInitializer implements CommandLineRunner {
 		for (CustomerDTO customer : customers) {
 			customer = customerService.createCustomer(customer);
 
-			AccountDTO savedAccount = accountService.createAccount(new AccountDTO(null, customer.id(), 100.5, null,AccountType.CURRENT));
+			AccountDTO savedAccount = accountService
+					.createAccount(new AccountDTO(null, customer.id(), 100.5, null, AccountTypeDTO.CURRENT));
 			Double amount = (Math.random() * 1000);
 
-			TransactionDTO transactionDTO = new TransactionDTO(null, savedAccount.id(), amount, LocalDateTime.now());
+			TransactionDTO transactionDTO = new TransactionDTO(null, savedAccount.id(), amount, LocalDateTime.now(),
+					TransactionTypeDTO.DEPOSIT, null);
 			transactionService.createTransaction(transactionDTO);
 			if (Math.random() < 0.6) {
-				AccountDTO account2 = new AccountDTO(null, customer.id(), 1500.6, null,AccountType.CURRENT);
+				AccountDTO account2 = new AccountDTO(null, customer.id(), 1500.6, null, AccountTypeDTO.CURRENT);
 				accountService.createAccount(account2);
 			}
 

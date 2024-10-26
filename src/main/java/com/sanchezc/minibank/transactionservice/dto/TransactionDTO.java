@@ -6,7 +6,9 @@ public record TransactionDTO(
     Long id,
     Long accountId,
     Double amount,
-    LocalDateTime transactionDate
+    LocalDateTime transactionDate,
+    TransactionTypeDTO type,
+    Long destinationAccountId
 ) {
 
 }

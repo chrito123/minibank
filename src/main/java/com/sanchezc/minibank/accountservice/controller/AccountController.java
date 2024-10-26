@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sanchezc.minibank.accountservice.dto.AccountCreationRequestDTO;
 import com.sanchezc.minibank.accountservice.dto.AccountDTO;
-import com.sanchezc.minibank.accountservice.model.AccountType;
+import com.sanchezc.minibank.accountservice.dto.AccountTypeDTO;
 import com.sanchezc.minibank.accountservice.service.AccountService;
 
 import jakarta.validation.Valid;
@@ -27,10 +27,10 @@ public class AccountController {
 	@PostMapping("/{customerId}/accounts")
 	@ResponseStatus(HttpStatus.CREATED)
 	@CrossOrigin(origins = "${appName.allowedApi}")
-	public AccountDTO createAccount(@PathVariable("customerId") Long customerId,
+	public AccountDTO createCurrentAccount(@PathVariable("customerId") Long customerId,
 			@Valid @RequestBody AccountCreationRequestDTO accountCreationRequestDTO) {
 
-		AccountDTO accountDto = new AccountDTO(null, customerId, accountCreationRequestDTO.initialCredit(), null,AccountType.CURRENT);
+		AccountDTO accountDto = new AccountDTO(null, customerId, accountCreationRequestDTO.initialCredit(), null,AccountTypeDTO.CURRENT);
 		AccountDTO createdAccountDto = accountService.createAccount(accountDto);
 
 		return createdAccountDto;

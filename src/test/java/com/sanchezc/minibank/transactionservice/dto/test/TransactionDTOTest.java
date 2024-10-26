@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 
 import com.sanchezc.minibank.transactionservice.dto.TransactionDTO;
+import com.sanchezc.minibank.transactionservice.dto.TransactionTypeDTO;
 
 public class TransactionDTOTest {
 
@@ -17,7 +18,7 @@ public class TransactionDTOTest {
         Double amount = 200.0;
         LocalDateTime transactionDate = LocalDateTime.now();
 
-        TransactionDTO transactionDTO = new TransactionDTO(transactionId, accountId, amount, transactionDate);
+        TransactionDTO transactionDTO = new TransactionDTO(transactionId, accountId, amount, transactionDate,TransactionTypeDTO.DEPOSIT,null);
 
         assertThat(transactionDTO.id()).isEqualTo(transactionId);
         assertThat(transactionDTO.accountId()).isEqualTo(accountId);

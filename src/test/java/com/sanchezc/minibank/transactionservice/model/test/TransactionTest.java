@@ -11,6 +11,7 @@ import com.sanchezc.minibank.accountservice.model.Account;
 import com.sanchezc.minibank.accountservice.model.AccountType;
 import com.sanchezc.minibank.customerservice.model.Customer;
 import com.sanchezc.minibank.transactionservice.model.Transaction;
+import com.sanchezc.minibank.transactionservice.model.TransactionType;
 
 @SpringBootTest
 public class TransactionTest {
@@ -22,7 +23,7 @@ public class TransactionTest {
 		Long accountId = 1L;
 		Customer customer = new Customer(customerId, "John", "Doe", null);
 		Account account1 = new Account(accountId, customer, 100d,null,AccountType.CURRENT);
-		Transaction transaction = new Transaction(transactionId, account1, 50d, now);
+		Transaction transaction = new Transaction(transactionId, account1, 50d, now,TransactionType.DEPOSIT,null);
 		assertEquals(transactionId, transaction.getId());
 		assertEquals(account1, transaction.getAccount());
 		assertEquals(50, transaction.getAmount());
@@ -37,8 +38,8 @@ public class TransactionTest {
 		Long accountId = 1L;
 		Customer customer = new Customer(customerId, "John", "Doe", null);
 		Account account1 = new Account(accountId, customer, 100d,null,AccountType.CURRENT);
-		Transaction transaction1 = new Transaction(transactionId, account1, 50d, now);
-		Transaction transaction2 = new Transaction(transactionId, account1, 50d, now);
+		Transaction transaction1 = new Transaction(transactionId, account1, 50d, now,TransactionType.DEPOSIT,null);
+		Transaction transaction2 = new Transaction(transactionId, account1, 50d, now,TransactionType.DEPOSIT,null);
 		assertEquals(transaction1, transaction2);
 		assertEquals(transaction1.hashCode(), transaction2.hashCode());
 	}

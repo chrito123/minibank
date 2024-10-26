@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import com.sanchezc.minibank.accountservice.model.Account;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -37,5 +39,10 @@ public class Transaction {
 
 	private LocalDateTime transactionDate;
 	
+	@Enumerated(EnumType.STRING)
+	private TransactionType type;
 
+	@ManyToOne
+	@JoinColumn(name = "destination_account_id")
+	private Account destinationAccount;
 }
