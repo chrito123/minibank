@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
-import com.sanchezc.minibank.accountservice.exception.AccountNotFoundException;
-import com.sanchezc.minibank.customerservice.exception.CustomerNotFoundException;
+import com.sanchezc.minibank.account.exception.AccountNotFoundException;
+import com.sanchezc.minibank.customer.exception.CustomerNotFoundException;
 import com.sanchezc.minibank.dto.GlobalExceptionDTO;
-import com.sanchezc.minibank.transactionservice.exception.TransactionNotFoundException;
+import com.sanchezc.minibank.transaction.exception.TransactionNotFoundException;
 
 
 @RestControllerAdvice

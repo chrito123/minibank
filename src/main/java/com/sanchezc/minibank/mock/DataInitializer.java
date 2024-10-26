@@ -7,14 +7,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import com.sanchezc.minibank.accountservice.dto.AccountDTO;
-import com.sanchezc.minibank.accountservice.dto.AccountTypeDTO;
-import com.sanchezc.minibank.accountservice.service.AccountService;
-import com.sanchezc.minibank.customerservice.dto.CustomerDTO;
-import com.sanchezc.minibank.customerservice.service.CustomerService;
-import com.sanchezc.minibank.transactionservice.dto.TransactionDTO;
-import com.sanchezc.minibank.transactionservice.dto.TransactionTypeDTO;
-import com.sanchezc.minibank.transactionservice.service.TransactionService;
+import com.sanchezc.minibank.account.dto.AccountDTO;
+import com.sanchezc.minibank.account.dto.AccountTypeDTO;
+import com.sanchezc.minibank.account.service.AccountService;
+import com.sanchezc.minibank.customer.dto.CustomerDTO;
+import com.sanchezc.minibank.customer.service.CustomerService;
+import com.sanchezc.minibank.transaction.dto.TransactionDTO;
+import com.sanchezc.minibank.transaction.dto.TransactionTypeDTO;
+import com.sanchezc.minibank.transaction.service.TransactionService;
 
 @Component
 @Profile("dev")
